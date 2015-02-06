@@ -117,6 +117,15 @@ feature 'Suspend a new project with default configuration' do
     expect(File).to exist("#{project_path}/config/initializers/simple_form.rb")
   end
 
+  scenario "local suspenders file" do
+    path = Dir.home + '/.suspenders.local.rb'
+    allow(File).to receive(:exists?).with(path).and_return(true)
+    allow(Suspenders::AppBuilder).to receive(:load).with(path).and_return('====================')
+    puts load path
+
+    run_suspenders
+  end
+
   def analytics_partial
     IO.read("#{project_path}/app/views/application/_analytics.html.erb")
   end

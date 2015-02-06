@@ -406,6 +406,13 @@ end
       end
     end
 
+    def local_suspenders
+      path = Dir.home + '/.suspenders.local.rb'
+      if File.exist? path
+        load path
+      end
+    end
+
     private
 
     def raise_on_missing_translations_in(environment)

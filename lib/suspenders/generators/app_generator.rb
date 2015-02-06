@@ -47,6 +47,7 @@ module Suspenders
       invoke :create_github_repo
       invoke :setup_segment_io
       invoke :setup_bundler_audit
+      invoke :local_modifications
       invoke :outro
     end
 
@@ -205,6 +206,10 @@ module Suspenders
 
     def remove_routes_comment_lines
       build :remove_routes_comment_lines
+    end
+
+    def local_modifications
+      build :local_suspenders
     end
 
     def outro
